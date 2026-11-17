@@ -201,8 +201,8 @@ summary{cursor:pointer;color:#4f46e5;font-weight:600}
 </header>
 <div class="card">
  <section id="start" class="screen on center">
-  <p class="lead">Thirty-one proposals from the platform of the Democratic-Republican Party. For each one, choose whether you <b>more agree</b> or <b>more disagree</b>.</p>
-  <p class="lead" style="color:var(--mute);font-size:15px">Every liberal answer moves you one point right. Every conservative answer moves you one point left. Your result lands somewhere on a line from −31 to +31.</p>
+  <p class="lead">Thirty-two proposals from the platform of the Democratic-Republican Party. For each one, choose whether you <b>more agree</b> or <b>more disagree</b>.</p>
+  <p class="lead" style="color:var(--mute);font-size:15px">Every liberal answer moves you one point right. Every conservative answer moves you one point left. Your result lands somewhere on a line from −32 to +32.</p>
   <p class="lean-note" id="lean-start"></p>
   <div class="versions" role="radiogroup" aria-label="Test version">
    <button type="button" class="version on" id="ver-standard" aria-pressed="true"><b>Standard</b><span>For each proposition, select whether you more agree or more disagree.</span></button>
@@ -211,7 +211,7 @@ summary{cursor:pointer;color:#4f46e5;font-weight:600}
   <button class="btn" id="go">Begin The Test</button>
  </section>
  <section id="quiz" class="screen">
-  <div class="meta"><span id="count">1 / 31</span><span id="pct">0%</span></div>
+  <div class="meta"><span id="count">1 / 32</span><span id="pct">0%</span></div>
   <div class="progress"><i id="bar"></i></div>
   <div id="qbox"><div class="qtitle" id="qtitle"></div><h2 class="stmt" id="stmt"></h2></div>
   <div class="meter unset" id="meter" hidden>
@@ -230,7 +230,7 @@ summary{cursor:pointer;color:#4f46e5;font-weight:600}
   <div class="align" id="align">
    <h3 class="align-heading" id="align-heading">DRP alignment: 0%</h3>
    <p class="align-band" id="align-band"></p>
-   <p class="align-explain" id="align-explain">This is how often your answer matches the Democratic-Republican Party on these 31 proposals. The party agrees with each statement as it is written. More agree is a match. More disagree is opposition. Every proposal counts the same. This is separate from the left/right score above.</p>
+   <p class="align-explain" id="align-explain">This is how often your answer matches the Democratic-Republican Party on these 32 proposals. The party agrees with each statement as it is written. More agree is a match. More disagree is opposition. Every proposal counts the same. This is separate from the left/right score above.</p>
    <div class="align-lists">
     <div class="align-col match"><h4 id="align-match-h">Proposals you agreed with</h4><ul id="align-match"></ul></div>
     <div class="align-col diff"><h4 id="align-diff-h">Proposals you disagreed with</h4><ul id="align-diff"></ul></div>
@@ -246,7 +246,7 @@ summary{cursor:pointer;color:#4f46e5;font-weight:600}
   </div>
   <p id="save-prompt" class="prompt" hidden>Create an account or sign in to save this result. <button type="button" class="textbtn" id="prompt-account">Create account</button> <button type="button" class="textbtn" id="prompt-signin">Sign in</button></p>
   <div class="actions"><button class="btn" id="share">Share my results</button><button class="btn ghost" id="again">Retake test</button><button class="btn" id="yours" hidden>Take the test yourself</button></div>
-  <details open><summary>Per-issue breakdown</summary><p class="legend"><span class="sidepill left" title="Objects from the conservative side">from the left</span> objects from the conservative side · <span class="sidepill right" title="Objects from the liberal side">from the right</span> objects from the liberal side</p><div id="rows"></div></details>
+  <details open><summary>Per-issue breakdown</summary><p class="legend"><span class="sidepill left" title="Conservative side">from the left</span> the conservative side · <span class="sidepill right" title="Liberal side">from the right</span> the liberal side</p><div id="rows"></div></details>
  </section>
  <section id="account" class="screen">
   <div class="qtitle center" id="account-title">Create account</div>
@@ -331,7 +331,8 @@ const ISSUES = [
   {"n": 28, "title": "Prostitution", "statement": "Prostitution should be legal and regulated.", "agreeIs": "liberal", "tag": "(l)", "confirm": true},
   {"n": 29, "title": "Nonlethal military", "statement": "Our military should exclusively use nonlethal force.", "agreeIs": "conservative", "tag": "(c)", "confirm": true},
   {"n": 30, "title": "Death penalty abolition", "statement": "The death penalty shall be prohibited in all circumstances.", "agreeIs": "conservative", "tag": "(c)", "confirm": true},
-  {"n": 31, "title": "Free will vs determinism", "statement": "Free will is real, and the evolution of the brain proves it.", "agreeIs": "liberal", "tag": "(l)", "confirm": true}
+  {"n": 31, "title": "Free will vs determinism", "statement": "Free will is real, and the evolution of the brain proves it.", "agreeIs": "liberal", "tag": "(l)", "confirm": true},
+  {"n": 32, "title": "Privacy vs transparency", "statement": "Those who have nothing to hide should have nothing to fear, and all mechanisms for hiding shall be abolished.", "agreeIs": "conservative", "tag": "(c)", "confirm": true}
 ];
 
 const FIGURES = {
@@ -342,7 +343,7 @@ const FIGURES = {
         "years": "1808–1887",
         "note": "Called taxation robbery in 'No Treason'",
         "source": "https://en.wikipedia.org/wiki/No_Treason",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "Murray Rothbard",
@@ -356,7 +357,7 @@ const FIGURES = {
         "years": "1817–1862",
         "note": "Refused poll tax; 'Civil Disobedience'",
         "source": "https://en.wikipedia.org/wiki/Civil_Disobedience_(Thoreau)",
-        "side": "left"
+        "side": "right"
       }
     ],
     "disagree": [
@@ -438,14 +439,14 @@ const FIGURES = {
         "years": "384–322 BC",
         "note": "Condemned chrematistics, wealth-getting as an end",
         "source": "https://en.wikipedia.org/wiki/Chrematistics",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "John Ruskin",
         "years": "1819–1900",
         "note": "'There is no wealth but life' (Unto This Last)",
         "source": "https://en.wikipedia.org/wiki/Unto_This_Last",
-        "side": "right"
+        "side": "left"
       }
     ],
     "disagree": [
@@ -465,21 +466,21 @@ const FIGURES = {
         "years": "1694–1778",
         "note": "Free thought; denounced the fanaticism behind the Calas execution",
         "source": "https://en.wikipedia.org/wiki/Jean_Calas",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "John Stuart Mill",
         "years": "1806–1873",
         "note": "Any doctrine may be discussed, but not speech that inflames a mob against a person",
         "source": "https://en.wikipedia.org/wiki/On_Liberty",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "Karl Popper",
         "years": "1902–1994",
         "note": "Paradox of tolerance: incitement to persecution should be criminal",
         "source": "https://en.wikipedia.org/wiki/Paradox_of_tolerance",
-        "side": "left"
+        "side": "right"
       }
     ],
     "disagree": [
@@ -516,7 +517,7 @@ const FIGURES = {
         "years": "1886–1971",
         "note": "Absolutist; Brandenburg concurrence protected KKK threats of \"revengeance\"",
         "source": "https://en.wikipedia.org/wiki/Brandenburg_v._Ohio",
-        "side": "right"
+        "side": "left"
       }
     ]
   },
@@ -527,21 +528,21 @@ const FIGURES = {
         "years": "1897–1978",
         "note": "Humanae Vitae banned contraception and abortion",
         "source": "https://en.wikipedia.org/wiki/Humanae_vitae",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Mother Teresa",
         "years": "1910–1997",
         "note": "Opposed abortion and artificial contraception",
         "source": "https://en.wikipedia.org/wiki/Mother_Teresa",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Anthony Comstock",
         "years": "1844–1915",
         "note": "Crusaded to outlaw contraception and abortion",
         "source": "https://en.wikipedia.org/wiki/Comstock_laws",
-        "side": "right"
+        "side": "left"
       }
     ],
     "disagree": [
@@ -596,7 +597,7 @@ const FIGURES = {
         "years": "1858–1919",
         "note": "Welcomed immigrants but demanded total assimilation: 'no hyphenated Americans'",
         "source": "https://en.wikipedia.org/wiki/Hyphenated_American",
-        "side": "left"
+        "side": "right"
       }
     ],
     "disagree": [
@@ -678,7 +679,7 @@ const FIGURES = {
         "years": "1858–1919",
         "note": "Used federal power to create parks and reserves",
         "source": "https://en.wikipedia.org/wiki/Theodore_Roosevelt",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Rachel Carson",
@@ -719,14 +720,14 @@ const FIGURES = {
         "years": "1737–1809",
         "note": "'Age of Reason': deism proven by nature",
         "source": "https://en.wikipedia.org/wiki/The_Age_of_Reason",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "Voltaire",
         "years": "1694–1778",
         "note": "Prominent deist critic of atheism",
         "source": "https://en.wikipedia.org/wiki/Religious_views_of_Voltaire",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "Antony Flew",
@@ -767,7 +768,7 @@ const FIGURES = {
         "years": "1856–1924",
         "note": "Urged 'economic, peaceful, silent, deadly' boycotts instead of force",
         "source": "https://www.presidency.ucsb.edu/documents/address-the-coliseum-the-state-fair-grounds-indianapolis-indiana",
-        "side": "left"
+        "side": "right"
       }
     ],
     "disagree": [
@@ -872,21 +873,21 @@ const FIGURES = {
         "years": "1723–1790",
         "note": "Argued for free trade over protection",
         "source": "https://en.wikipedia.org/wiki/The_Wealth_of_Nations",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "David Ricardo",
         "years": "1772–1823",
         "note": "Comparative advantage; opposed Corn Laws",
         "source": "https://en.wikipedia.org/wiki/Comparative_advantage",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Richard Cobden",
         "years": "1804–1865",
         "note": "Led Anti-Corn Law League for free trade",
         "source": "https://en.wikipedia.org/wiki/Anti-Corn_Law_League",
-        "side": "right"
+        "side": "left"
       }
     ]
   },
@@ -913,14 +914,14 @@ const FIGURES = {
         "years": "1748–1832",
         "note": "Panopticon: constant surveillance and control of prisoners",
         "source": "https://en.wikipedia.org/wiki/Panopticon",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "Elam Lynds",
         "years": "1784–1855",
         "note": "Sing Sing warden; enforced silence, hard labor",
         "source": "https://en.wikipedia.org/wiki/Elam_Lynds",
-        "side": "left"
+        "side": "right"
       }
     ]
   },
@@ -931,7 +932,7 @@ const FIGURES = {
         "years": "1723–1780",
         "note": "Ratio: better ten guilty escape than one innocent suffer",
         "source": "https://en.wikipedia.org/wiki/Blackstone%27s_ratio",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Thomas Jefferson",
@@ -947,7 +948,7 @@ const FIGURES = {
         "years": "1907–1985",
         "note": "His 1972 report created non-jury 'Diplock courts' in Northern Ireland",
         "source": "https://en.wikipedia.org/wiki/Diplock_courts",
-        "side": "left"
+        "side": "right"
       }
     ]
   },
@@ -958,7 +959,7 @@ const FIGURES = {
         "years": "1788–1850",
         "note": "Founded the Met in 1829 as an unarmed police force",
         "source": "https://en.wikipedia.org/wiki/Police_use_of_firearms_in_the_United_Kingdom",
-        "side": "right"
+        "side": "left"
       }
     ],
     "disagree": [
@@ -967,7 +968,7 @@ const FIGURES = {
         "years": "1902–1976",
         "note": "Ordered police to 'shoot to kill' arsonists in 1968",
         "source": "https://en.wikipedia.org/wiki/Richard_J._Daley",
-        "side": "left"
+        "side": "right"
       }
     ]
   },
@@ -978,21 +979,21 @@ const FIGURES = {
         "years": "1588–1679",
         "note": "Life in nature 'nasty, brutish, and short'",
         "source": "https://en.wikipedia.org/wiki/Leviathan_(Hobbes_book)",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Augustine of Hippo",
         "years": "354–430",
         "note": "Doctrine of original sin",
         "source": "https://en.wikipedia.org/wiki/Original_sin",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Xunzi",
         "years": "c.310–235 BC",
         "note": "'Human nature is bad'",
         "source": "https://en.wikipedia.org/wiki/Xunzi_(philosopher)",
-        "side": "right"
+        "side": "left"
       }
     ],
     "disagree": [
@@ -1026,21 +1027,21 @@ const FIGURES = {
         "years": "1724–1804",
         "note": "'Perpetual Peace': cosmopolitan federation",
         "source": "https://en.wikipedia.org/wiki/Perpetual_Peace:_A_Philosophical_Sketch",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "Albert Einstein",
         "years": "1879–1955",
         "note": "Called nationalism 'the measles of mankind'; world government",
         "source": "https://en.wikipedia.org/wiki/Albert_Einstein",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "H. G. Wells",
         "years": "1866–1946",
         "note": "Advocated world state",
         "source": "https://en.wikipedia.org/wiki/H._G._Wells",
-        "side": "left"
+        "side": "right"
       }
     ],
     "disagree": [
@@ -1074,7 +1075,7 @@ const FIGURES = {
         "years": "1632–1704",
         "note": "Property a natural right government must protect",
         "source": "https://en.wikipedia.org/wiki/Two_Treatises_of_Government",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "Ayn Rand",
@@ -1122,7 +1123,7 @@ const FIGURES = {
         "years": "1809–1865",
         "note": "Ended slavery; backed 13th Amendment",
         "source": "https://en.wikipedia.org/wiki/Abraham_Lincoln",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Frederick Douglass",
@@ -1136,7 +1137,7 @@ const FIGURES = {
         "years": "1759–1833",
         "note": "Led British abolition",
         "source": "https://en.wikipedia.org/wiki/William_Wilberforce",
-        "side": "right"
+        "side": "left"
       }
     ],
     "disagree": [
@@ -1145,21 +1146,21 @@ const FIGURES = {
         "years": "1782–1850",
         "note": "Called slavery 'a positive good'",
         "source": "https://en.wikipedia.org/wiki/Slavery_as_a_positive_good_in_the_United_States",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "Aristotle",
         "years": "384–322 BC",
         "note": "Defended 'natural slavery'",
         "source": "https://en.wikipedia.org/wiki/Natural_slavery",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "Alexander Stephens",
         "years": "1812–1883",
         "note": "'Cornerstone Speech' defended slavery",
         "source": "https://en.wikipedia.org/wiki/Cornerstone_Speech",
-        "side": "left"
+        "side": "right"
       }
     ]
   },
@@ -1252,14 +1253,14 @@ const FIGURES = {
         "years": "1225–1274",
         "note": "Summa II-II q64 a5: suicide is always unlawful",
         "source": "https://www.newadvent.org/summa/3064.htm",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "William Blackstone",
         "years": "1723–1780",
         "note": "Treated suicide as a crime ('self-murder')",
         "source": "https://en.wikipedia.org/wiki/William_Blackstone",
-        "side": "right"
+        "side": "left"
       }
     ],
     "disagree": [
@@ -1286,7 +1287,7 @@ const FIGURES = {
         "years": "1829–1903",
         "note": "Cosmism: resurrect all ancestors as humanity's duty",
         "source": "https://en.wikipedia.org/wiki/Nikolai_Fyodorovich_Fyodorov",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Robert Ettinger",
@@ -1320,7 +1321,7 @@ const FIGURES = {
         "years": "1751–1836",
         "note": "Framed the Second Amendment; praised an armed militia",
         "source": "https://en.wikipedia.org/wiki/Second_Amendment_to_the_United_States_Constitution",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "Charlton Heston",
@@ -1334,7 +1335,7 @@ const FIGURES = {
         "years": "1925–1965",
         "note": "Urged Black self-defense 'by any means necessary'",
         "source": "https://en.wikipedia.org/wiki/Malcolm_X",
-        "side": "left"
+        "side": "right"
       }
     ],
     "disagree": [
@@ -1361,14 +1362,14 @@ const FIGURES = {
         "years": "1801–1877",
         "note": "Championed polygamy and large families",
         "source": "https://en.wikipedia.org/wiki/Brigham_Young",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Theodore Roosevelt",
         "years": "1858–1919",
         "note": "Warned of 'race suicide' from falling birthrates",
         "source": "https://en.wikipedia.org/wiki/Race_suicide",
-        "side": "right"
+        "side": "left"
       }
     ],
     "disagree": [
@@ -1376,14 +1377,15 @@ const FIGURES = {
         "name": "Thomas Malthus",
         "years": "1766–1834",
         "note": "Population growth outpaces food; urged restraint",
-        "source": "https://en.wikipedia.org/wiki/An_Essay_on_the_Principle_of_Population"
+        "source": "https://en.wikipedia.org/wiki/An_Essay_on_the_Principle_of_Population",
+        "side": "right"
       },
       {
         "name": "Abraham Lincoln",
         "years": "1809–1865",
         "note": "Signed the Morrill Anti-Bigamy Act (1862)",
         "source": "https://en.wikipedia.org/wiki/Morrill_Anti-Bigamy_Act",
-        "side": "left"
+        "side": "right"
       }
     ]
   },
@@ -1394,14 +1396,14 @@ const FIGURES = {
         "years": "1225–1274",
         "note": "Classed 'the unnatural vice' as gravest form of lust",
         "source": "https://www.newadvent.org/summa/3154.htm",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Anita Bryant",
         "years": "1940–2024",
         "note": "'Save Our Children' anti-gay campaign",
         "source": "https://en.wikipedia.org/wiki/Anita_Bryant",
-        "side": "right"
+        "side": "left"
       }
     ],
     "disagree": [
@@ -1435,7 +1437,7 @@ const FIGURES = {
         "years": "1927–2022",
         "note": "Condemned gender theory as rejecting created human nature",
         "source": "https://en.wikipedia.org/wiki/Pope_Benedict_XVI",
-        "side": "right"
+        "side": "left"
       }
     ],
     "disagree": [
@@ -1484,7 +1486,8 @@ const FIGURES = {
         "name": "Josephine Butler",
         "years": "1828–1906",
         "note": "Fought state regulation of prostitution",
-        "source": "https://en.wikipedia.org/wiki/Josephine_Butler"
+        "source": "https://en.wikipedia.org/wiki/Josephine_Butler",
+        "side": "left"
       },
       {
         "name": "Andrea Dworkin",
@@ -1525,14 +1528,14 @@ const FIGURES = {
         "years": "1780–1831",
         "note": "War as continuation of politics by force",
         "source": "https://en.wikipedia.org/wiki/Carl_von_Clausewitz",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "George Orwell",
         "years": "1903–1950",
         "note": "Argued pacifists rely on others' violence on their behalf",
         "source": "https://en.wikipedia.org/wiki/Pacifism",
-        "side": "left"
+        "side": "right"
       }
     ]
   },
@@ -1566,21 +1569,21 @@ const FIGURES = {
         "years": "1724–1804",
         "note": "Held every murderer deserves to die",
         "source": "https://en.wikipedia.org/wiki/Capital_punishment_debate",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "John Stuart Mill",
         "years": "1806–1873",
         "note": "1868 Commons speech defending capital punishment",
         "source": "https://api.parliament.uk/historic-hansard/commons/1868/apr/21/committee",
-        "side": "left"
+        "side": "right"
       },
       {
         "name": "Jean-Jacques Rousseau",
         "years": "1712–1778",
         "note": "Social Contract II.5: criminal may be executed as public enemy",
         "source": "https://standardebooks.org/ebooks/jean-jacques-rousseau/the-social-contract/g-d-h-cole/text/chapter-2-5",
-        "side": "left"
+        "side": "right"
       }
     ]
   },
@@ -1598,7 +1601,7 @@ const FIGURES = {
         "years": "1842–1910",
         "note": "'The Dilemma of Determinism' (1884) argued for a real open future",
         "source": "https://en.wikipedia.org/wiki/William_James",
-        "side": "left"
+        "side": "right"
       }
     ],
     "disagree": [
@@ -1614,6 +1617,40 @@ const FIGURES = {
         "years": "1788–1860",
         "note": "'On the Freedom of the Will': a man can do what he wills, but cannot will what he wills",
         "source": "https://en.wikipedia.org/wiki/On_the_Freedom_of_the_Will",
+        "side": "left"
+      }
+    ]
+  },
+  "32": {
+    "agree": [
+      {
+        "name": "Jeremy Bentham",
+        "years": "1748–1832",
+        "note": "Designed the Panopticon, a building where everyone could be seen",
+        "source": "https://en.wikipedia.org/wiki/Panopticon",
+        "side": "left"
+      },
+      {
+        "name": "David Brin",
+        "years": "born 1950",
+        "note": "'The Transparent Society' (1998) argued for open surveillance that everyone can see",
+        "source": "https://en.wikipedia.org/wiki/The_Transparent_Society",
+        "side": "left"
+      }
+    ],
+    "disagree": [
+      {
+        "name": "Louis Brandeis",
+        "years": "1856–1941",
+        "note": "With Samuel Warren, wrote 'The Right to Privacy' (1890)",
+        "source": "https://en.wikipedia.org/wiki/The_Right_to_Privacy_(article)",
+        "side": "right"
+      },
+      {
+        "name": "Hannah Arendt",
+        "years": "1906–1975",
+        "note": "'The Human Condition' defended a protected private realm",
+        "source": "https://en.wikipedia.org/wiki/The_Human_Condition",
         "side": "right"
       }
     ]
@@ -1626,7 +1663,7 @@ const ALIGN_STANDARD_N=n=>'This is how often your answer matches the Democratic-
 const ALIGN_DELUXE='This is how closely your answers match the Democratic-Republican Party, weighted by strength. The party agrees with each statement as written. Each proposal you agree with contributes its strength, from 1 to 100. Each proposal you disagree with contributes none. The percentage is matched strength divided by total strength, so a strong disagreement lowers it more than a weak one. The left/right score above still counts each answer once.';
 const LEGACY_N=30;
 function leanNote(n){const sub=ISSUES.slice(0,n);const l=sub.filter(q=>q.agreeIs==='liberal').length,c=n-l;
- const lead=l===c?`Of these ${n} proposals, ${l} count as liberal and ${c} as conservative. `:`Of these ${n} proposals, ${l} count as liberal and ${c} as conservative, a slight liberal lean. That lean is intended: morality itself has a slight liberal bias. `;
+ const lead=l===c?`Of these ${n} proposals, ${l} count as liberal and ${c} as conservative, so the platform is evenly balanced. The Democratic-Republican Party is a radical centrist party. `:`Of these ${n} proposals, ${l} count as liberal and ${c} as conservative. `;
  return lead+'“Liberal” here means on the side of liberty, the word’s true and historical meaning, which counts as right-wing, not the modern left. “Conservative” is the other side, which counts as left-wing.'}
 const other=s=>s==='liberal'?'conservative':'liberal';
 function sideOf(k,a){return a==='agree'?ISSUES[k].agreeIs:other(ISSUES[k].agreeIs)}
@@ -1640,11 +1677,11 @@ function answer(a){if(testVersion==='deluxe'&&!strengthSet[i]){$('#meter-hint').
 function tally(){let l=0,c=0;answers.forEach((a,k)=>sideOf(k,a)==='liberal'?l++:c++);return{l,c,score:l-c}}
 function buildAxis(N){N=N||ISSUES.length;const g=$('#graph');g.querySelectorAll('.tick,.tl').forEach(e=>e.remove());for(let v=-Math.floor(N/5)*5;v<=N;v+=5){const x=(v+N)/(2*N)*100;const t=document.createElement('div');t.className='tick'+(v%10===0?' major':'');t.style.left=x+'%';g.appendChild(t);
  const l=document.createElement('div');l.className='tl'+(v%10===0?'':' minor');l.style.left=x+'%';l.textContent=v>0?'+'+v:v;g.appendChild(l)}}
-function verdict(s){const a=Math.abs(s);if(a===0)return'Squarely in the center.';const left=s>0;if(a<=5)return left?'Left of center.':'Right of center.';if(a<=10)return left?'Center-left.':'Center-right.';if(a<=20)return left?'Left.':'Right.';return left?'Far left.':'Far right.'}
+function verdict(s){const a=Math.abs(s);if(a===0)return'Squarely in the center.';const left=s<0;if(a<=5)return left?'Left of center.':'Right of center.';if(a<=10)return left?'Center-left.':'Center-right.';if(a<=20)return left?'Left.':'Right.';return left?'Far left.':'Far right.'}
 function drpStance(q){return q&&(q.drp==='agree'||q.drp==='disagree')?q.drp:'agree'}
 function alignmentBand(pct){if(pct>=100)return'Perfectly aligned';if(pct>=80)return'Strongly aligned';if(pct>=60)return'Mostly aligned';if(pct>=40)return'Mixed';if(pct>=20)return'Mostly opposed';return'Strongly opposed'}
 function validStrengths(list,n){if(!Array.isArray(list)||(n?list.length!==n:(list.length<LEGACY_N||list.length>ISSUES.length)))return null;const nums=list.map(n=>Number(n));if(nums.some(n=>!Number.isInteger(n)||n<1||n>100))return null;return nums}
-/* Standard: round(100 * matches / N), N = number of proposals answered (31 now; saved 30-proposal results still read as 30). Deluxe: round(100 * sum(match * strength) / sum(strength)), strength 1–100. Bands are unchanged. */
+/* Standard: round(100 * matches / N), N = number of proposals answered (32 now; saved 30-proposal results still read as 30). Deluxe: round(100 * sum(match * strength) / sum(strength)), strength 1–100. Bands are unchanged. */
 function drpAlignment(list,opts){opts=opts||{};const N=list.length;const weights=opts.version==='deluxe'?validStrengths(opts.strengths,N):null;const deluxe=!!weights;let plain=0,weightSum=0,matchedWeight=0;const items=ISSUES.slice(0,N).map((q,k)=>{const answer=list[k];const match=answer===drpStance(q);const strength=deluxe?weights[k]:null;if(match)plain++;if(deluxe){weightSum+=strength;if(match)matchedWeight+=strength}return{n:q.n,title:q.title,answer,match,strength}});const pct=deluxe?(weightSum?Math.round(100*matchedWeight/weightSum):0):Math.round(100*plain/N);const agreed=items.filter(it=>it.answer==='agree');const disagreed=items.filter(it=>it.answer==='disagree');return{pct,band:alignmentBand(pct),deluxe,agreed,disagreed}}
 function alignItem(it,deluxe){return deluxe?`${esc(it.n+'. '+it.title)} <b>${esc(it.strength)}</b>`:esc(it.n+'. '+it.title)}
 function fillAlignList(id,items,deluxe){const rows=deluxe?items.slice().sort((a,b)=>b.strength-a.strength||a.n-b.n):items;$('#'+id).innerHTML=rows.length?rows.map(it=>`<li>${alignItem(it,deluxe)}</li>`).join(''):'<li>None</li>'}
@@ -1652,11 +1689,11 @@ function renderAlignment(list){const a=drpAlignment(list,{version:testVersion,st
 function alignmentText(r,version,stored){const decoded=decodeAnswers(r);if(!decoded)return'';const a=drpAlignment(decoded,{version,strengths:stored});return'DRP alignment: '+a.pct+'% · '+a.band}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function hostOf(url){try{return new URL(url).hostname.replace(/^www\./,'')}catch(e){return 'source'}}
-function sidePill(side){if(side==='left')return `<span class="sidepill left" title="Objects from the conservative side">from the left</span>`;if(side==='right')return `<span class="sidepill right" title="Objects from the liberal side">from the right</span>`;return ''}
-function figureCards(list,showSide){return list.map(f=>`<div class="fig"><div class="nm">${esc(f.name)} <span class="yrs">${esc(f.years)}</span>${showSide?sidePill(f.side):''}</div><p class="note">${esc(f.note)}</p><a href="${esc(f.source)}" target="_blank" rel="noopener noreferrer">${esc(hostOf(f.source))}</a></div>`).join('')}
+function sidePill(side,kind){const v=kind==='agree'?'Agrees':'Objects';if(side==='left')return `<span class="sidepill left" title="${v} from the conservative side">from the left</span>`;if(side==='right')return `<span class="sidepill right" title="${v} from the liberal side">from the right</span>`;return ''}
+function figureCards(list,kind){return list.map(f=>`<div class="fig"><div class="nm">${esc(f.name)} <span class="yrs">${esc(f.years)}</span>${kind?sidePill(f.side,kind):''}</div><p class="note">${esc(f.note)}</p><a href="${esc(f.source)}" target="_blank" rel="noopener noreferrer">${esc(hostOf(f.source))}</a></div>`).join('')}
 function figuresFor(n){const f=FIGURES[String(n)]||{};const parts=[];
- if(f.agree&&f.agree.length)parts.push(`<div class="who agree"><h3>Who agreed</h3>${figureCards(f.agree,true)}</div>`);
- if(f.disagree&&f.disagree.length)parts.push(`<div class="who disagree"><h3>Who disagreed</h3>${figureCards(f.disagree,true)}</div>`);
+ if(f.agree&&f.agree.length)parts.push(`<div class="who agree"><h3>Who agreed</h3>${figureCards(f.agree,'agree')}</div>`);
+ if(f.disagree&&f.disagree.length)parts.push(`<div class="who disagree"><h3>Who disagreed</h3>${figureCards(f.disagree,'disagree')}</div>`);
  return parts.length?`<div class="figures${parts.length===2?' pair':''}">${parts.join('')}</div>`:''}
 function encodeAnswers(list){let n=0;for(let k=0;k<list.length;k++)n=n*2+(list[k]==='agree'?1:0);return (list.length===LEGACY_N?'':list.length+'-')+n.toString(36)}
 /* Saved/shared codes: 30-proposal results are a bare base-36 number. Results with more proposals are 'N-' + base-36, so old links and saved results keep their meaning. */
@@ -1689,14 +1726,14 @@ document.addEventListener('keydown',e=>{if(!$('#quiz').classList.contains('on'))
 $('#share').onclick=async()=>{const text=shareText();const url=resultUrl();if(navigator.share){try{await navigator.share({title:'DRP Compass',text,url});return}catch(e){if(e&&e.name==='AbortError')return;try{await navigator.share({title:'DRP Compass',text});return}catch(e2){if(e2&&e2.name==='AbortError')return}}}
  try{await navigator.clipboard.writeText(text);toast('Link copied')}catch(e){const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Link copied')}};
 function scoreChart(rows){const pts=rows.slice().sort((a,b)=>a.at<b.at?-1:1);if(!pts.length)return'';
- const w=640,h=150,pad=22,y=s=>pad+(h-pad*2)*(1-(s+31)/62),x=i=>pts.length<2?w/2:pad+(w-pad*2)*i/(pts.length-1);
+ const w=640,h=150,pad=22,y=s=>pad+(h-pad*2)*(1-(s+32)/64),x=i=>pts.length<2?w/2:pad+(w-pad*2)*i/(pts.length-1);
  const d=pts.map((p,i)=>(i?'L':'M')+x(i).toFixed(1)+','+y(p.score).toFixed(1)).join(' ');
- const dots=pts.map((p,i)=>{const align=alignmentText(p.r,p.version,p.strengths);const ver=versionLabel(p.version);return `<circle cx="${x(i).toFixed(1)}" cy="${y(p.score).toFixed(1)}" r="4" fill="#4f46e5"><title>${esc((p.score>0?'+':'')+p.score+' '+p.label+' · '+ver+(align?' · '+align:''))}</title></circle>`}).join('');
+ const dots=pts.map((p,i)=>{const align=alignmentText(p.r,p.version,p.strengths);const ver=versionLabel(p.version);return `<circle cx="${x(i).toFixed(1)}" cy="${y(p.score).toFixed(1)}" r="4" fill="#4f46e5"><title>${esc((p.score>0?'+':'')+p.score+' '+verdict(p.score).replace(/\.$/,'')+' · '+ver+(align?' · '+align:''))}</title></circle>`}).join('');
  return `<svg class="chart" viewBox="0 0 ${w} ${h}" role="img" aria-label="Score over time"><line x1="${pad}" y1="${y(0)}" x2="${w-pad}" y2="${y(0)}" stroke="#111111" stroke-width="1"/><path d="${d}" fill="none" stroke="#4f46e5" stroke-width="2"/>${dots}</svg>`}
 function when(at){try{return new Date(at).toLocaleString(undefined,{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'})}catch(e){return at}}
 function renderHistory(rows){$('#chart').innerHTML=scoreChart(rows);
  if(!rows.length){$('#history-list').innerHTML='<p class="lead">No saved results yet.</p>';return}
- $('#history-list').innerHTML=rows.map(row=>{const align=alignmentText(row.r,row.version,row.strengths);const ver=versionLabel(row.version);const href='/?r='+encodeURIComponent(row.r)+(row.version==='deluxe'&&validStrengths(row.strengths,(decodeAnswers(row.r)||[]).length)?'&v=deluxe&s='+row.strengths.join(','):'');return `<article class="hrow"><div class="hmeta"><time datetime="${esc(row.at)}">${esc(when(row.at))}</time><b class="${row.score<0?'neg':''}">${row.score>0?'+':''}${row.score}</b><span class="hlabel">${esc(row.label)}</span><span class="hlabel">${esc(ver)}</span>${align?`<span class="hlabel">${esc(align)}</span>`:''}</div><p class="hnote">${row.note?esc(row.note):'<span class="hlabel">No note</span>'}</p><div class="hactions"><a class="textbtn" href="${href}">View result</a><button type="button" class="textbtn" data-edit="${esc(row.id)}">Edit note</button><button type="button" class="textbtn danger" data-del="${esc(row.id)}">Delete</button></div><form class="editnote" data-form="${esc(row.id)}" hidden><textarea rows="3">${esc(row.note||'')}</textarea><button class="btn" type="submit">Save note</button></form></article>`}).join('')}
+ $('#history-list').innerHTML=rows.map(row=>{const align=alignmentText(row.r,row.version,row.strengths);const ver=versionLabel(row.version);const href='/?r='+encodeURIComponent(row.r)+(row.version==='deluxe'&&validStrengths(row.strengths,(decodeAnswers(row.r)||[]).length)?'&v=deluxe&s='+row.strengths.join(','):'');return `<article class="hrow"><div class="hmeta"><time datetime="${esc(row.at)}">${esc(when(row.at))}</time><b class="${row.score<0?'neg':''}">${row.score>0?'+':''}${row.score}</b><span class="hlabel">${esc(verdict(row.score).replace(/\.$/,''))}</span><span class="hlabel">${esc(ver)}</span>${align?`<span class="hlabel">${esc(align)}</span>`:''}</div><p class="hnote">${row.note?esc(row.note):'<span class="hlabel">No note</span>'}</p><div class="hactions"><a class="textbtn" href="${href}">View result</a><button type="button" class="textbtn" data-edit="${esc(row.id)}">Edit note</button><button type="button" class="textbtn danger" data-del="${esc(row.id)}">Delete</button></div><form class="editnote" data-form="${esc(row.id)}" hidden><textarea rows="3">${esc(row.note||'')}</textarea><button class="btn" type="submit">Save note</button></form></article>`}).join('')}
 async function openHistory(){try{const profile=await DRPStorage.currentProfile();if(!profile){openSignin();return}renderHistory(await DRPStorage.listHistory(profile.id));show('history')}catch(err){toast(err.message||'Could not load history.')}}
 async function refreshAccount(){if(!window.DRPStorage)return;const me=await DRPStorage.currentProfile();
  const owner=!!(me&&me.email==='cubzub@gmail.com');
