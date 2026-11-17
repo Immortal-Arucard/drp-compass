@@ -137,6 +137,7 @@ summary{cursor:pointer;color:#4f46e5;font-weight:600}
 .fig a{display:inline-block;margin-top:4px;color:#7c3aed;font-size:12px;line-height:1.35;text-decoration:none;overflow-wrap:anywhere}
 .fig a:hover{color:#7c3aed;text-decoration:underline}
 .pill{font-size:11px;padding:3px 9px;border-radius:99px;text-transform:uppercase;letter-spacing:.1em;white-space:nowrap}
+.lean-note{font-size:14px;line-height:1.55;color:var(--mute);margin:14px 0 0;text-align:left;max-width:60ch}.lean-note:empty{display:none}.lean-note b{color:var(--ink,inherit)}
 .pill.liberal{background:#dc2626;color:#ffffff;border:1px solid #dc2626}.pill.conservative{background:#1d4ed8;color:#ffffff;border:1px solid #1d4ed8}
 .legend{margin:14px 0 2px;color:#3a3550;font-size:12px;line-height:1.55}
 .sidepill{display:inline-block;padding:1px 7px;border-radius:99px;font-family:Inter,system-ui,sans-serif;font-size:10px;font-weight:600;letter-spacing:.02em;white-space:nowrap;vertical-align:1px;line-height:1.6}
@@ -200,8 +201,9 @@ summary{cursor:pointer;color:#4f46e5;font-weight:600}
 </header>
 <div class="card">
  <section id="start" class="screen on center">
-  <p class="lead">Thirty proposals from the platform of the Democratic-Republican Party. For each one, choose whether you <b>more agree</b> or <b>more disagree</b>.</p>
-  <p class="lead" style="color:var(--mute);font-size:15px">Every liberal answer moves you one point right. Every conservative answer moves you one point left. Your result lands somewhere on a line from −30 to +30.</p>
+  <p class="lead">Thirty-one proposals from the platform of the Democratic-Republican Party. For each one, choose whether you <b>more agree</b> or <b>more disagree</b>.</p>
+  <p class="lead" style="color:var(--mute);font-size:15px">Every liberal answer moves you one point right. Every conservative answer moves you one point left. Your result lands somewhere on a line from −31 to +31.</p>
+  <p class="lean-note" id="lean-start"></p>
   <div class="versions" role="radiogroup" aria-label="Test version">
    <button type="button" class="version on" id="ver-standard" aria-pressed="true"><b>Standard</b><span>For each proposition, select whether you more agree or more disagree.</span></button>
    <button type="button" class="version" id="ver-deluxe" aria-pressed="false"><b>Deluxe</b><span>The same as Standard, plus a required sentiment strength score for each proposition, out of 100.</span></button>
@@ -209,7 +211,7 @@ summary{cursor:pointer;color:#4f46e5;font-weight:600}
   <button class="btn" id="go">Begin The Test</button>
  </section>
  <section id="quiz" class="screen">
-  <div class="meta"><span id="count">1 / 30</span><span id="pct">0%</span></div>
+  <div class="meta"><span id="count">1 / 31</span><span id="pct">0%</span></div>
   <div class="progress"><i id="bar"></i></div>
   <div id="qbox"><div class="qtitle" id="qtitle"></div><h2 class="stmt" id="stmt"></h2></div>
   <div class="meter unset" id="meter" hidden>
@@ -228,12 +230,13 @@ summary{cursor:pointer;color:#4f46e5;font-weight:600}
   <div class="align" id="align">
    <h3 class="align-heading" id="align-heading">DRP alignment: 0%</h3>
    <p class="align-band" id="align-band"></p>
-   <p class="align-explain" id="align-explain">This is how often your answer matches the Democratic-Republican Party on these 30 proposals. The party agrees with each statement as it is written. More agree is a match. More disagree is opposition. Every proposal counts the same. This is separate from the left/right score above.</p>
+   <p class="align-explain" id="align-explain">This is how often your answer matches the Democratic-Republican Party on these 31 proposals. The party agrees with each statement as it is written. More agree is a match. More disagree is opposition. Every proposal counts the same. This is separate from the left/right score above.</p>
    <div class="align-lists">
     <div class="align-col match"><h4 id="align-match-h">Proposals you agreed with</h4><ul id="align-match"></ul></div>
     <div class="align-col diff"><h4 id="align-diff-h">Proposals you disagreed with</h4><ul id="align-diff"></ul></div>
    </div>
   </div>
+  <p class="lean-note" id="lean-result"></p>
   <div class="stats"><div class="stat l"><b id="nl">0</b><span>Liberal answers</span></div><div class="stat c"><b id="nc">0</b><span>Conservative answers</span></div></div>
   <div id="save-box" class="note-box" hidden>
    <label class="field" for="thoughts">Your thoughts today
@@ -327,7 +330,8 @@ const ISSUES = [
   {"n": 27, "title": "Trans", "statement": "With the current technology, it is wrong to be trans.", "agreeIs": "conservative", "tag": "(c)", "confirm": true},
   {"n": 28, "title": "Prostitution", "statement": "Prostitution should be legal and regulated.", "agreeIs": "liberal", "tag": "(l)", "confirm": true},
   {"n": 29, "title": "Nonlethal military", "statement": "Our military should exclusively use nonlethal force.", "agreeIs": "conservative", "tag": "(c)", "confirm": true},
-  {"n": 30, "title": "Death penalty abolition", "statement": "The death penalty shall be prohibited in all circumstances.", "agreeIs": "conservative", "tag": "(c)", "confirm": true}
+  {"n": 30, "title": "Death penalty abolition", "statement": "The death penalty shall be prohibited in all circumstances.", "agreeIs": "conservative", "tag": "(c)", "confirm": true},
+  {"n": 31, "title": "Free will vs determinism", "statement": "Free will is real, and the evolution of the brain proves it.", "agreeIs": "liberal", "tag": "(l)", "confirm": true}
 ];
 
 const FIGURES = {
@@ -1579,13 +1583,51 @@ const FIGURES = {
         "side": "left"
       }
     ]
+  },
+  "31": {
+    "agree": [
+      {
+        "name": "Augustine of Hippo",
+        "years": "354–430",
+        "note": "'On Free Choice of the Will' defended the freedom of the will",
+        "source": "https://en.wikipedia.org/wiki/On_Free_Choice_of_the_Will",
+        "side": "right"
+      },
+      {
+        "name": "William James",
+        "years": "1842–1910",
+        "note": "'The Dilemma of Determinism' (1884) argued for a real open future",
+        "source": "https://en.wikipedia.org/wiki/William_James",
+        "side": "left"
+      }
+    ],
+    "disagree": [
+      {
+        "name": "Baruch Spinoza",
+        "years": "1632–1677",
+        "note": "'Ethics' held that people think themselves free only because they do not know the causes of their acts",
+        "source": "https://en.wikipedia.org/wiki/Ethics_(Spinoza)",
+        "side": "left"
+      },
+      {
+        "name": "Arthur Schopenhauer",
+        "years": "1788–1860",
+        "note": "'On the Freedom of the Will': a man can do what he wills, but cannot will what he wills",
+        "source": "https://en.wikipedia.org/wiki/On_the_Freedom_of_the_Will",
+        "side": "right"
+      }
+    ]
   }
 };
 
 const $=s=>document.querySelector(s);
 let i=0, answers=[], strengths=[], strengthSet=[], pendingSave=null, currentEntry=null, accountReturn='start', pickedVersion='standard', testVersion='standard';
-const ALIGN_STANDARD='This is how often your answer matches the Democratic-Republican Party on these 30 proposals. The party agrees with each statement as it is written. More agree is a match. More disagree is opposition. Every proposal counts the same. This is separate from the left/right score above.';
+const ALIGN_STANDARD_N=n=>'This is how often your answer matches the Democratic-Republican Party on these '+n+' proposals. The party agrees with each statement as it is written. More agree is a match. More disagree is opposition. Every proposal counts the same. This is separate from the left/right score above.';
 const ALIGN_DELUXE='This is how closely your answers match the Democratic-Republican Party, weighted by strength. The party agrees with each statement as written. Each proposal you agree with contributes its strength, from 1 to 100. Each proposal you disagree with contributes none. The percentage is matched strength divided by total strength, so a strong disagreement lowers it more than a weak one. The left/right score above still counts each answer once.';
+const LEGACY_N=30;
+function leanNote(n){const sub=ISSUES.slice(0,n);const l=sub.filter(q=>q.agreeIs==='liberal').length,c=n-l;
+ const lead=l===c?`Of these ${n} proposals, ${l} count as liberal and ${c} as conservative. `:`Of these ${n} proposals, ${l} count as liberal and ${c} as conservative, a slight liberal lean. That lean is intended: morality itself has a slight liberal bias. `;
+ return lead+'“Liberal” here means on the side of liberty, the word’s true and historical meaning, which counts as right-wing, not the modern left. “Conservative” is the other side, which counts as left-wing.'}
 const other=s=>s==='liberal'?'conservative':'liberal';
 function sideOf(k,a){return a==='agree'?ISSUES[k].agreeIs:other(ISSUES[k].agreeIs)}
 function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$('#'+id).classList.add('on')}
@@ -1596,17 +1638,17 @@ function syncMeter(){const deluxe=testVersion==='deluxe';const box=$('#meter');b
 function answer(a){if(testVersion==='deluxe'&&!strengthSet[i]){$('#meter-hint').hidden=false;return}answers[i]=a;if(testVersion==='deluxe')strengths[i]=Number($('#strength').value);$('#bar').style.width=Math.round((i+1)/ISSUES.length*100)+'%';const b=$('#qbox');b.style.animation='out .25s ease both';
  setTimeout(()=>{i++;i<ISSUES.length?render():finish()},240)}
 function tally(){let l=0,c=0;answers.forEach((a,k)=>sideOf(k,a)==='liberal'?l++:c++);return{l,c,score:l-c}}
-function buildAxis(){const g=$('#graph');const N=ISSUES.length;for(let v=-N;v<=N;v+=5){const x=(v+N)/(2*N)*100;const t=document.createElement('div');t.className='tick'+(v%10===0?' major':'');t.style.left=x+'%';g.appendChild(t);
+function buildAxis(N){N=N||ISSUES.length;const g=$('#graph');g.querySelectorAll('.tick,.tl').forEach(e=>e.remove());for(let v=-Math.floor(N/5)*5;v<=N;v+=5){const x=(v+N)/(2*N)*100;const t=document.createElement('div');t.className='tick'+(v%10===0?' major':'');t.style.left=x+'%';g.appendChild(t);
  const l=document.createElement('div');l.className='tl'+(v%10===0?'':' minor');l.style.left=x+'%';l.textContent=v>0?'+'+v:v;g.appendChild(l)}}
 function verdict(s){const a=Math.abs(s);if(a===0)return'Squarely in the center.';const left=s>0;if(a<=5)return left?'Left of center.':'Right of center.';if(a<=10)return left?'Center-left.':'Center-right.';if(a<=20)return left?'Left.':'Right.';return left?'Far left.':'Far right.'}
 function drpStance(q){return q&&(q.drp==='agree'||q.drp==='disagree')?q.drp:'agree'}
 function alignmentBand(pct){if(pct>=100)return'Perfectly aligned';if(pct>=80)return'Strongly aligned';if(pct>=60)return'Mostly aligned';if(pct>=40)return'Mixed';if(pct>=20)return'Mostly opposed';return'Strongly opposed'}
-function validStrengths(list){if(!Array.isArray(list)||list.length!==ISSUES.length)return null;const nums=list.map(n=>Number(n));if(nums.some(n=>!Number.isInteger(n)||n<1||n>100))return null;return nums}
-/* Standard: round(100 * matches / 30). Deluxe: round(100 * sum(match * strength) / sum(strength)), strength 1–100. Bands are unchanged. */
-function drpAlignment(list,opts){opts=opts||{};const weights=opts.version==='deluxe'?validStrengths(opts.strengths):null;const deluxe=!!weights;let plain=0,weightSum=0,matchedWeight=0;const items=ISSUES.map((q,k)=>{const answer=list[k];const match=answer===drpStance(q);const strength=deluxe?weights[k]:null;if(match)plain++;if(deluxe){weightSum+=strength;if(match)matchedWeight+=strength}return{n:q.n,title:q.title,answer,match,strength}});const pct=deluxe?(weightSum?Math.round(100*matchedWeight/weightSum):0):Math.round(100*plain/ISSUES.length);const agreed=items.filter(it=>it.answer==='agree');const disagreed=items.filter(it=>it.answer==='disagree');return{pct,band:alignmentBand(pct),deluxe,agreed,disagreed}}
+function validStrengths(list,n){if(!Array.isArray(list)||(n?list.length!==n:(list.length<LEGACY_N||list.length>ISSUES.length)))return null;const nums=list.map(n=>Number(n));if(nums.some(n=>!Number.isInteger(n)||n<1||n>100))return null;return nums}
+/* Standard: round(100 * matches / N), N = number of proposals answered (31 now; saved 30-proposal results still read as 30). Deluxe: round(100 * sum(match * strength) / sum(strength)), strength 1–100. Bands are unchanged. */
+function drpAlignment(list,opts){opts=opts||{};const N=list.length;const weights=opts.version==='deluxe'?validStrengths(opts.strengths,N):null;const deluxe=!!weights;let plain=0,weightSum=0,matchedWeight=0;const items=ISSUES.slice(0,N).map((q,k)=>{const answer=list[k];const match=answer===drpStance(q);const strength=deluxe?weights[k]:null;if(match)plain++;if(deluxe){weightSum+=strength;if(match)matchedWeight+=strength}return{n:q.n,title:q.title,answer,match,strength}});const pct=deluxe?(weightSum?Math.round(100*matchedWeight/weightSum):0):Math.round(100*plain/N);const agreed=items.filter(it=>it.answer==='agree');const disagreed=items.filter(it=>it.answer==='disagree');return{pct,band:alignmentBand(pct),deluxe,agreed,disagreed}}
 function alignItem(it,deluxe){return deluxe?`${esc(it.n+'. '+it.title)} <b>${esc(it.strength)}</b>`:esc(it.n+'. '+it.title)}
 function fillAlignList(id,items,deluxe){const rows=deluxe?items.slice().sort((a,b)=>b.strength-a.strength||a.n-b.n):items;$('#'+id).innerHTML=rows.length?rows.map(it=>`<li>${alignItem(it,deluxe)}</li>`).join(''):'<li>None</li>'}
-function renderAlignment(list){const a=drpAlignment(list,{version:testVersion,strengths});$('#align-heading').textContent='DRP alignment: '+a.pct+'%';$('#align-band').textContent=a.band;$('#align-explain').textContent=a.deluxe?ALIGN_DELUXE:ALIGN_STANDARD;$('#align-match-h').textContent=a.deluxe?'Most agree with':'Proposals you agreed with';$('#align-diff-h').textContent=a.deluxe?'Most disagree with':'Proposals you disagreed with';fillAlignList('align-match',a.agreed,a.deluxe);fillAlignList('align-diff',a.disagreed,a.deluxe);return a}
+function renderAlignment(list){const a=drpAlignment(list,{version:testVersion,strengths});$('#align-heading').textContent='DRP alignment: '+a.pct+'%';$('#align-band').textContent=a.band;$('#align-explain').textContent=a.deluxe?ALIGN_DELUXE:ALIGN_STANDARD_N(list.length);$('#align-match-h').textContent=a.deluxe?'Most agree with':'Proposals you agreed with';$('#align-diff-h').textContent=a.deluxe?'Most disagree with':'Proposals you disagreed with';fillAlignList('align-match',a.agreed,a.deluxe);fillAlignList('align-diff',a.disagreed,a.deluxe);return a}
 function alignmentText(r,version,stored){const decoded=decodeAnswers(r);if(!decoded)return'';const a=drpAlignment(decoded,{version,strengths:stored});return'DRP alignment: '+a.pct+'% · '+a.band}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function hostOf(url){try{return new URL(url).hostname.replace(/^www\./,'')}catch(e){return 'source'}}
@@ -1616,17 +1658,18 @@ function figuresFor(n){const f=FIGURES[String(n)]||{};const parts=[];
  if(f.agree&&f.agree.length)parts.push(`<div class="who agree"><h3>Who agreed</h3>${figureCards(f.agree,true)}</div>`);
  if(f.disagree&&f.disagree.length)parts.push(`<div class="who disagree"><h3>Who disagreed</h3>${figureCards(f.disagree,true)}</div>`);
  return parts.length?`<div class="figures${parts.length===2?' pair':''}">${parts.join('')}</div>`:''}
-function encodeAnswers(list){let n=0;for(let k=0;k<list.length;k++)n=(n<<1)|(list[k]==='agree'?1:0);return n.toString(36)}
-function decodeAnswers(s){const N=ISSUES.length;if(!s||!/^[0-9a-z]+$/i.test(s)||s.length>8)return null;const n=parseInt(s,36);if(!Number.isSafeInteger(n)||n<0||n>=2**N)return null;const out=[];for(let k=0;k<N;k++)out.push(((n>>(N-1-k))&1)?'agree':'disagree');return out}
+function encodeAnswers(list){let n=0;for(let k=0;k<list.length;k++)n=n*2+(list[k]==='agree'?1:0);return (list.length===LEGACY_N?'':list.length+'-')+n.toString(36)}
+/* Saved/shared codes: 30-proposal results are a bare base-36 number. Results with more proposals are 'N-' + base-36, so old links and saved results keep their meaning. */
+function decodeAnswers(s){const m=/^(?:(\d{2})-)?([0-9a-z]{1,8})$/i.exec(s||'');if(!m)return null;const N=m[1]?Number(m[1]):LEGACY_N;if(N<LEGACY_N||N>ISSUES.length)return null;const n=parseInt(m[2],36);if(!Number.isSafeInteger(n)||n<0||n>=2**N)return null;const out=[];for(let k=0;k<N;k++)out.push(Math.floor(n/2**(N-1-k))%2?'agree':'disagree');return out}
 function versionLabel(v){return v==='deluxe'?'Deluxe':'Standard'}
 function resultUrl(){const u=new URL('/',location.origin);u.searchParams.set('r',encodeAnswers(answers));if(testVersion==='deluxe'){u.searchParams.set('v','deluxe');u.searchParams.set('s',strengths.map(n=>Number(n)).join(','))}return u.href}
 function shareText(){const{score}=tally();const shown=score>0?'+'+score:String(score);const label=verdict(score).replace(/\.$/,'');const align=drpAlignment(answers,{version:testVersion,strengths});return `I scored ${shown} on the DRP Compass (${label}), ${versionLabel(testVersion)}. DRP alignment: ${align.pct}% (${align.band.toLowerCase()}). Take it: ${resultUrl()}`}
 function setResultActions(readonly){$('#share').hidden=!!readonly;$('#again').hidden=!!readonly;$('#yours').hidden=!readonly}
 function finish(readonly){const{l,c,score}=tally();show('result');setResultActions(readonly);$('#result-version').textContent=versionLabel(testVersion);$('#nl').textContent=l;$('#nc').textContent=c;$('#verdict').textContent=verdict(score);renderAlignment(answers);
- const N=ISSUES.length,m=$('#marker');m.style.transition='none';m.style.left='50%';m.offsetHeight;m.style.transition='';
+ const N=answers.length;buildAxis(N);$('#lean-result').textContent=leanNote(N);const m=$('#marker');m.style.transition='none';m.style.left='50%';m.offsetHeight;m.style.transition='';
  setTimeout(()=>{m.style.left=((score+N)/(2*N)*100)+'%'},60);
  let cur=0,t0=performance.now();(function step(t){const k=Math.min(1,(t-t0)/1800),e=1-Math.pow(1-k,3);cur=Math.round(score*e);$('#score').textContent=(cur>0?'+':'')+cur;if(k<1)setTimeout(()=>step(performance.now()),16)})(t0);
- $('#rows').innerHTML=ISSUES.map((q,k)=>{const s=sideOf(k,answers[k]);const felt=testVersion==='deluxe'&&strengths[k]?` · ${strengths[k]}`:'';return`<div class="issue"><div class="row"><span class="n">${q.n}</span><span class="t">${q.statement}<em>You: ${answers[k]==='agree'?'More agree':'More disagree'}${felt}</em></span><span class="pill ${s}">${s}</span></div>${figuresFor(q.n)}</div>`}).join('');
+ $('#rows').innerHTML=ISSUES.slice(0,N).map((q,k)=>{const s=sideOf(k,answers[k]);const felt=testVersion==='deluxe'&&strengths[k]?` · ${strengths[k]}`:'';return`<div class="issue"><div class="row"><span class="n">${q.n}</span><span class="t">${q.statement}<em>You: ${answers[k]==='agree'?'More agree':'More disagree'}${felt}</em></span><span class="pill ${s}">${s}</span></div>${figuresFor(q.n)}</div>`}).join('');
  if(!readonly&&location.protocol.startsWith('http'))history.replaceState(null,'',resultUrl());
  if(readonly){pendingSave=null;currentEntry=null;$('#save-box').hidden=true;$('#save-prompt').hidden=true}
  else{pendingSave={score,label:verdict(score).replace(/\.$/,''),r:encodeAnswers(answers),note:'',version:testVersion,strengths:testVersion==='deluxe'?strengths.slice():null};currentEntry=null;$('#thoughts').value='';persistResult();try{if(window.DRPStorage&&DRPStorage.logTestEvent)DRPStorage.logTestEvent(score,answers.slice(),{version:testVersion,strengths:testVersion==='deluxe'?strengths.slice():null}).catch(()=>{})}catch(e){}}}
@@ -1646,14 +1689,14 @@ document.addEventListener('keydown',e=>{if(!$('#quiz').classList.contains('on'))
 $('#share').onclick=async()=>{const text=shareText();const url=resultUrl();if(navigator.share){try{await navigator.share({title:'DRP Compass',text,url});return}catch(e){if(e&&e.name==='AbortError')return;try{await navigator.share({title:'DRP Compass',text});return}catch(e2){if(e2&&e2.name==='AbortError')return}}}
  try{await navigator.clipboard.writeText(text);toast('Link copied')}catch(e){const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Link copied')}};
 function scoreChart(rows){const pts=rows.slice().sort((a,b)=>a.at<b.at?-1:1);if(!pts.length)return'';
- const w=640,h=150,pad=22,y=s=>pad+(h-pad*2)*(1-(s+30)/60),x=i=>pts.length<2?w/2:pad+(w-pad*2)*i/(pts.length-1);
+ const w=640,h=150,pad=22,y=s=>pad+(h-pad*2)*(1-(s+31)/62),x=i=>pts.length<2?w/2:pad+(w-pad*2)*i/(pts.length-1);
  const d=pts.map((p,i)=>(i?'L':'M')+x(i).toFixed(1)+','+y(p.score).toFixed(1)).join(' ');
  const dots=pts.map((p,i)=>{const align=alignmentText(p.r,p.version,p.strengths);const ver=versionLabel(p.version);return `<circle cx="${x(i).toFixed(1)}" cy="${y(p.score).toFixed(1)}" r="4" fill="#4f46e5"><title>${esc((p.score>0?'+':'')+p.score+' '+p.label+' · '+ver+(align?' · '+align:''))}</title></circle>`}).join('');
  return `<svg class="chart" viewBox="0 0 ${w} ${h}" role="img" aria-label="Score over time"><line x1="${pad}" y1="${y(0)}" x2="${w-pad}" y2="${y(0)}" stroke="#111111" stroke-width="1"/><path d="${d}" fill="none" stroke="#4f46e5" stroke-width="2"/>${dots}</svg>`}
 function when(at){try{return new Date(at).toLocaleString(undefined,{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'})}catch(e){return at}}
 function renderHistory(rows){$('#chart').innerHTML=scoreChart(rows);
  if(!rows.length){$('#history-list').innerHTML='<p class="lead">No saved results yet.</p>';return}
- $('#history-list').innerHTML=rows.map(row=>{const align=alignmentText(row.r,row.version,row.strengths);const ver=versionLabel(row.version);const href='/?r='+encodeURIComponent(row.r)+(row.version==='deluxe'&&validStrengths(row.strengths)?'&v=deluxe&s='+row.strengths.join(','):'');return `<article class="hrow"><div class="hmeta"><time datetime="${esc(row.at)}">${esc(when(row.at))}</time><b class="${row.score<0?'neg':''}">${row.score>0?'+':''}${row.score}</b><span class="hlabel">${esc(row.label)}</span><span class="hlabel">${esc(ver)}</span>${align?`<span class="hlabel">${esc(align)}</span>`:''}</div><p class="hnote">${row.note?esc(row.note):'<span class="hlabel">No note</span>'}</p><div class="hactions"><a class="textbtn" href="${href}">View result</a><button type="button" class="textbtn" data-edit="${esc(row.id)}">Edit note</button><button type="button" class="textbtn danger" data-del="${esc(row.id)}">Delete</button></div><form class="editnote" data-form="${esc(row.id)}" hidden><textarea rows="3">${esc(row.note||'')}</textarea><button class="btn" type="submit">Save note</button></form></article>`}).join('')}
+ $('#history-list').innerHTML=rows.map(row=>{const align=alignmentText(row.r,row.version,row.strengths);const ver=versionLabel(row.version);const href='/?r='+encodeURIComponent(row.r)+(row.version==='deluxe'&&validStrengths(row.strengths,(decodeAnswers(row.r)||[]).length)?'&v=deluxe&s='+row.strengths.join(','):'');return `<article class="hrow"><div class="hmeta"><time datetime="${esc(row.at)}">${esc(when(row.at))}</time><b class="${row.score<0?'neg':''}">${row.score>0?'+':''}${row.score}</b><span class="hlabel">${esc(row.label)}</span><span class="hlabel">${esc(ver)}</span>${align?`<span class="hlabel">${esc(align)}</span>`:''}</div><p class="hnote">${row.note?esc(row.note):'<span class="hlabel">No note</span>'}</p><div class="hactions"><a class="textbtn" href="${href}">View result</a><button type="button" class="textbtn" data-edit="${esc(row.id)}">Edit note</button><button type="button" class="textbtn danger" data-del="${esc(row.id)}">Delete</button></div><form class="editnote" data-form="${esc(row.id)}" hidden><textarea rows="3">${esc(row.note||'')}</textarea><button class="btn" type="submit">Save note</button></form></article>`}).join('')}
 async function openHistory(){try{const profile=await DRPStorage.currentProfile();if(!profile){openSignin();return}renderHistory(await DRPStorage.listHistory(profile.id));show('history')}catch(err){toast(err.message||'Could not load history.')}}
 async function refreshAccount(){if(!window.DRPStorage)return;const me=await DRPStorage.currentProfile();
  const owner=!!(me&&me.email==='cubzub@gmail.com');
@@ -1690,8 +1733,8 @@ async function offerImport(){if(sessionStorage.getItem('drp.importLock')||!windo
 async function resumePending(){if(!pendingSave){try{const raw=sessionStorage.getItem('drp.pendingResult');if(raw)pendingSave=JSON.parse(raw)}catch(e){}}
  await refreshAccount();if(pendingSave)await persistResult();await offerImport()}
 function onStorageReady(e){if(e&&e.detail&&e.detail.error)toast(e.detail.error.message);resumePending()}
-buildAxis();
-(function(){const params=new URLSearchParams(location.search);const hash=new URLSearchParams((location.hash||'').replace(/^#/,''));const authError=params.get('error_description')||hash.get('error_description');if(authError)toast(authError.replace(/\+/g,' '));const decoded=decodeAnswers(params.get('r'));if(decoded){answers=decoded;const loaded=params.get('v')==='deluxe'?validStrengths((params.get('s')||'').split(',')):null;testVersion=loaded?'deluxe':'standard';strengths=loaded||[];finish(true);return}if(window.__DEMO__){answers=window.__DEMO__;finish()}})();
+buildAxis();$('#lean-start').textContent=leanNote(ISSUES.length);
+(function(){const params=new URLSearchParams(location.search);const hash=new URLSearchParams((location.hash||'').replace(/^#/,''));const authError=params.get('error_description')||hash.get('error_description');if(authError)toast(authError.replace(/\+/g,' '));const decoded=decodeAnswers(params.get('r'));if(decoded){answers=decoded;const loaded=params.get('v')==='deluxe'?validStrengths((params.get('s')||'').split(','),decoded.length):null;testVersion=loaded?'deluxe':'standard';strengths=loaded||[];finish(true);return}if(window.__DEMO__){answers=window.__DEMO__;finish()}})();
 window.addEventListener('drp-storage-ready',onStorageReady);
 window.addEventListener('drp-auth',function(e){if(e.detail&&e.detail.error)toast(e.detail.error.message);else resumePending()});
 if(window.DRPStorage)resumePending();
