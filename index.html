@@ -327,7 +327,7 @@ const ISSUES = [
   {"n": 24, "title": "Weapons legal", "statement": "All weapons should be legal and reasonably regulated.", "agreeIs": "liberal", "tag": "(l)", "confirm": true},
   {"n": 25, "title": "Polygyny & birthrates", "statement": "Society should embrace polyginy and all other means of maximizing birthrates.", "agreeIs": "conservative", "tag": "(c)", "confirm": true},
   {"n": 26, "title": "Gay", "statement": "It is wrong to be gay.", "agreeIs": "conservative", "tag": "(c)", "confirm": true},
-  {"n": 27, "title": "Trans", "statement": "Being trans is good, but physical or chemical transition is wrong until it can be done perfectly, at the genetic level, with no harm to health.", "agreeIs": "conservative", "tag": "(c)", "confirm": true},
+  {"n": 27, "title": "Trans", "statement": "Being trans is good, but physical or chemical transition is wrong until it can be done perfectly, at the genetic level, with no harm to health.", "agreeIs": "liberal", "tag": "(l)", "confirm": true},
   {"n": 28, "title": "Prostitution", "statement": "Prostitution should be legal and regulated.", "agreeIs": "liberal", "tag": "(l)", "confirm": true},
   {"n": 29, "title": "Nonlethal military", "statement": "Our military should exclusively use nonlethal force.", "agreeIs": "conservative", "tag": "(c)", "confirm": true},
   {"n": 30, "title": "Death penalty abolition", "statement": "The death penalty shall be prohibited in all circumstances.", "agreeIs": "conservative", "tag": "(c)", "confirm": true},
@@ -1437,21 +1437,21 @@ const FIGURES = {
         "years": "1868–1935",
         "note": "Pioneered transgender care and acceptance",
         "source": "https://en.wikipedia.org/wiki/Magnus_Hirschfeld",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Harry Benjamin",
         "years": "1885–1986",
         "note": "Founded transgender medicine",
         "source": "https://en.wikipedia.org/wiki/Harry_Benjamin",
-        "side": "right"
+        "side": "left"
       },
       {
         "name": "Christine Jorgensen",
         "years": "1926–1989",
         "note": "Famous trans woman and advocate",
         "source": "https://en.wikipedia.org/wiki/Christine_Jorgensen",
-        "side": "right"
+        "side": "left"
       }
     ]
   },
@@ -1654,8 +1654,8 @@ const ALIGN_STANDARD_N=n=>'This is how often your answer matches the Democratic-
 const ALIGN_DELUXE='This is how closely your answers match the Democratic-Republican Party, weighted by strength. The party agrees with each statement as written. Each proposal you agree with contributes its strength, from 1 to 100. Each proposal you disagree with contributes none. The percentage is matched strength divided by total strength, so a strong disagreement lowers it more than a weak one. The left/right score above still counts each answer once.';
 const LEGACY_N=30;
 function leanNote(n){const sub=ISSUES.slice(0,n);const l=sub.filter(q=>q.agreeIs==='liberal').length,c=n-l;
- const lead=l===c?`Of these ${n} proposals, ${l} count as liberal and ${c} as conservative, so the platform is evenly balanced. The Democratic-Republican Party is a radical centrist party. `:`Of these ${n} proposals, ${l} count as liberal and ${c} as conservative. `;
- return lead+'“Liberal” here means on the side of liberty, the word’s true and historical meaning, which counts as right-wing, not the modern left. “Conservative” is the other side, which counts as left-wing.'}
+ const lead=l===c?`Of these ${n} proposals, ${l} count as liberal and ${c} as conservative, so the platform is evenly balanced. `:`Of these ${n} proposals, ${l} count as liberal and ${c} as conservative. `;
+ return lead+'The Democratic-Republican Party is a radical centrist party. '+'“Liberal” here means on the side of liberty, the word’s true and historical meaning, which counts as right-wing, not the modern left. “Conservative” is the other side, which counts as left-wing.'}
 const other=s=>s==='liberal'?'conservative':'liberal';
 function sideOf(k,a){return a==='agree'?ISSUES[k].agreeIs:other(ISSUES[k].agreeIs)}
 function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$('#'+id).classList.add('on')}
